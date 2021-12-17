@@ -54,7 +54,7 @@ function getPasswordRequirements(){
    window.alert("At least one character type must be selected");
   }
   //object = all the pw criteria
-  const passwordEntries = {
+  var passwordEntries = {
     promptPWLength: promptPWLength,
     hasUpperCase: hasUpperCase,
     hasLowerCase: hasLowerCase,
@@ -62,35 +62,57 @@ function getPasswordRequirements(){
     hasSymbols: hasSymbols
   };
   return passwordEntries;
-}
+} 
 
 function generatePassword(){
 var requirements=getPasswordRequirements();
-
 var listOfCharacterTypes = []
+var everyCharacterType =[]
+var password = []
 if (requirements.hasUpperCase){
   listOfCharacterTypes = listOfCharacterTypes.concat(upperCase);
+  //console.log('upperCase', listOfCharacterTypes);
+  everyCharacterType.push(getRandom(upperCase))
+  //console.log('upperCase', everyCharacterType);
 } 
 if (requirements.hasLowerCase){
   listOfCharacterTypes = listOfCharacterTypes.concat(lowerCase);
+ //console.log('upperCase + lowerCase', listOfCharacterTypes);
+  everyCharacterType.push(getRandom(lowerCase))
+//console.log('upperCase + lowerCase', everyCharacterType);
  } 
  if (requirements.hasNumbers){
    listOfCharacterTypes = listOfCharacterTypes.concat(numbers)
+  // console.log('upperCase + lowerCase + numbers', listOfCharacterTypes);
+   everyCharacterType.push(getRandom(numbers))
+  // console.log('upperCase + lowerCase + numbers', everyCharacterType);
  }
  if (requirements.hasSymbols){
    listOfCharacterTypes = listOfCharacterTypes.concat(specialCharacter)
- }
+   everyCharacterType.push(getRandom(specialCharacter))
+ } 
+
+for(var i = 0; i<requirements.promptPWLength; i++){
+  var character = getRandom(listOfCharacterTypes);
+  password.push(character) 
+}
+//console.log('originalPassword', password.join(''));
+for(var i = 0; i < everyCharacterType.length; i++){
+  password[i] = everyCharacterType[i];
+}
+//console.log('originalPassword + everyCharacterType', password.join(''));
+//console.log(password);
+let answer = password.join('');
+//console.log(answer);
+return answer;
 } 
 
+function getRandom(arr){
+  const randomIndex = Math.floor(Math.random() * arr.length)
+  return arr[randomIndex]
+}
 
 
-
-
-//TODO getRandom function
-
-
-
-//other code starts here - all my code is before.
 
 
 // Get references to the #generate element
@@ -114,59 +136,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // Generator Function - using the codes from www.net-comber.com/charset.html    |    https://www.youtube.com/watch?v=duNmhKgtcsI&t=433s
-
-
-// const randomFunc = {
-//   lower: getRandomLower,
-//   upper: getRandomUppconsole,
-//   number: getRandomNumber,
-//   symbol: getRandomSymbol
-// }
-
-
-
-// function getRandomLower(){
-//   return String.fromCharCode(Math.floor(Math.random() * 26)) + 97);
-// }
-
-
-// function getRandomUpper(){
-//   return String.fromCharCode(Math.floor(Math.random() * 26)) + 65);
-// }
-
-
-// function getRandomNumber(){
-//   return String.fromCharCode(Math.floor(Math.random() * 10)) + 48);
-// }
-
-
-// function getRandomsymbol(){
- // const symbols ='!@#$%^&*)(_-=+}{][|<>?/';
-//   return symbols[Math.floor(Math.random() *symbols.length)];
-// }
-
-
-
-
-
-
-
-
-
-
-
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria           /prompts...
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
