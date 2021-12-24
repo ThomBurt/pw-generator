@@ -100,8 +100,8 @@ for(var i = 0; i<requirements.promptPWLength; i++){
 for(var i = 0; i < everyCharacterType.length; i++){
   password[i] = everyCharacterType[i];
 }
-//console.log('originalPassword + everyCharacterType', password.join(''));
-//console.log(password);
+
+
 let answer = password.join('');
 //console.log(answer);
 return answer;

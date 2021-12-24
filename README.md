@@ -1,6 +1,7 @@
 # Password Generator Starter Code
 Here are the files for the Password Generator which I got working.
 
+<img src="pw generator screenshot.PNG" alt="pw generator screenshot" width="955" height="450">
 
 - I started out with the possible character, which are seperated into their own unique variable. upperCase, lowerCase, numbers, specialCharacters
 
