@@ -3,6 +3,15 @@ Here are the files for the Password Generator which I got working.
 
 <img src="pw generator screenshot.PNG" alt="pw generator screenshot" width="955" height="450">
 
+URL - https://thomburt.github.io/pw-generator/ (Links to an external site.)
+
+ 
+
+GitHub Repo - https://github.com/ThomBurt/pw-generator
+
+
+
+
 - I started out with the possible character, which are seperated into their own unique variable. upperCase, lowerCase, numbers, specialCharacters
 
 - I then created a new 'getPasswordRequirements function, which I used to store the questions.
